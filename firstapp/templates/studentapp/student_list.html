@@ -1,0 +1,43 @@
+{% extends 'studentapp/base.html' %}
+
+{% block content %}
+<h2>Student Details</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Join Date</th>
+            <th>Course</th>
+            <th>Course Fee</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.join_date }}</td>
+            <td>{{ student.course.course_name }}</td>
+            <td>{{ student.course.course_fee }}</td>
+            <td>
+                <a href="{% url 'edit_student' student.id %}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'delete_student' student.id %}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

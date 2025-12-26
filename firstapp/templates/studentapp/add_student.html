@@ -1,0 +1,20 @@
+{% extends 'studentapp/base.html' %}
+{% block content %}
+<h3>Add Student</h3>
+<form method="POST">
+    {% csrf_token %}
+    <input class="form-control mb-2" name="name" placeholder="Name" required>
+    <textarea class="form-control mb-2" name="address" placeholder="Address"></textarea>
+    <input class="form-control mb-2" name="age" type="number" placeholder="Age" required>
+    <input class="form-control mb-2" name="join_date" type="date" required>
+
+    <select class="form-control mb-2" name="course" required>
+        <option value="">Select Course</option>
+        {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.course_name }}</option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-success">Add Student</button>
+</form>
+{% endblock %}

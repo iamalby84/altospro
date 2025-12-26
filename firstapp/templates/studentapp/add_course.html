@@ -1,0 +1,10 @@
+{% extends 'studentapp/base.html' %}
+{% block content %}
+<h3>Add Course</h3>
+<form method="POST">
+    {% csrf_token %}
+    <input class="form-control mb-2" name="course_name" placeholder="Course Name" required>
+    <input class="form-control mb-2" name="course_fee" placeholder="Course Fee" required>
+    <button class="btn btn-primary">Add Course</button>
+</form>
+{% endblock %}

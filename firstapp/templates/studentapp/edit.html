@@ -1,0 +1,66 @@
+{% extends 'studentapp/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-4">
+            <h3 class="text-center mb-3">Edit Student</h3>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- Name -->
+                <input
+                    class="form-control mb-2"
+                    name="name"
+                    value="{{ student.name }}"
+                    placeholder="Name"
+                    required
+                >
+
+                <!-- Address -->
+                <textarea
+                    class="form-control mb-2"
+                    name="address"
+                    placeholder="Address"
+                >{{ student.address }}</textarea>
+
+                <!-- Age -->
+                <input
+                    class="form-control mb-2"
+                    name="age"
+                    type="number"
+                    value="{{ student.age }}"
+                    placeholder="Age"
+                    required
+                >
+
+                <!-- Join Date -->
+                <input
+                    class="form-control mb-2"
+                    name="join_date"
+                    type="date"
+                    value="{{ student.join_date|date:'Y-m-d' }}"
+                    required
+                >
+
+                <!-- Course Dropdown -->
+                <select class="form-control mb-3" name="course" required>
+                    <option value="">Select Course</option>
+                    {% for course in courses %}
+                        <option value="{{ course.id }}"
+                            {% if course.id == student.course.id %}selected{% endif %}
+                        >
+                            {{ course.course_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button class="btn btn-success w-100">
+                    Update Student
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

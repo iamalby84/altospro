@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home1' %}">StudentApp</a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'add_course' %}">Add Course</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'add_student' %}">Add Student</a></li>
+            <li><a class="nav-link" href="{% url 'student_list' %}">Student Details</a><li>
+            <li><a class="nav-link" href="{% url 'loginpage' %}">Login</a></li>
+            <li><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
